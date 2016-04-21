@@ -13,6 +13,9 @@
         "phonegap-plugin-push": {
             "SENDER_ID": "718397155156",
             "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     },
     "dependent_plugins": {}
