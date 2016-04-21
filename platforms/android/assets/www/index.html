@@ -34,18 +34,46 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
 		<script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="push.js"></script>
+       
 		 <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript">
 		//document.addEventListener("deviceready",onDeviceReady,false);
-			/*function loaded(){
+			function loaded(){
 			 alert('hi');  
-			 document.addEventListener("deviceready",onDeviceReady,false);
-			}*/
-			document.addEventListener("deviceready",onDeviceReady,false);
+				var pushRegistration = null;
+				function registerForPushNotifications() {
+				alert('new');
+				pushRegistration = PushNotification.init({
+				android: {
+				senderID: '718397155156'
+				},
+				ios: {
+				alert: 'true',
+				badge: 'true',
+				sound: 'true'
+				},
+				wns: {
+
+				}
+				});
+
+				pushRegistration.on('registration', function (data) {
+				client.push.register('gcm', data.registrationId);
+				});
+
+				pushRegistration.on('notification', function (data, d2) {
+				alert('Push Received: ' + data.message);
+				});
+
+				pushRegistration.on('error', handleError);
+				}
+			 //document.addEventListener("deviceready",onDeviceReady,false);
+			}
+			/*document.addEventListener("deviceready",onDeviceReady,false);
 			function onDeviceReady(){
 				alert("Device Ready");
+			
 			/*var push = PushNotification.init({ "android": {"senderID": "718397155156"},
 			"ios": {"alert": "true", "badge": "true", "sound": "true"}, "windows": {} } );
 
@@ -67,13 +95,14 @@
 			push.on('error', function(e) {
 			console.log(e.message);
 			});*/          
-			}
+			//}
 </script>
     </head>  
-    <body>
+    <body onload="loaded();">
         <div class="app">
             <h1>Apache Cordova</h1>
             <p id="gcm_id">new    id::::::</p>
+			<p id="gcm">hi:::::</p>
         </div>
         <script type="text/javascript" src="js/index.js"></script>
 		 <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
