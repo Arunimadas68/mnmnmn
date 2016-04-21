@@ -36,6 +36,7 @@
 		<script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
+		document.addEventListener("deviceready",onDeviceReady,false);
 			function loaded(){
 			 alert('hi');  
 			 document.addEventListener("deviceready",onDeviceReady,false);
@@ -49,7 +50,7 @@
 			push.on('registration', function(data) {
 			console.log(data.registrationId);
 			$("#gcm_id").html(data.registrationId);
-			});
+			});    
 
 			push.on('notification', function(data) {
 			console.log(data.message);
